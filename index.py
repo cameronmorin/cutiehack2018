@@ -1,10 +1,16 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
 
-bot = Flask(__name__)
+app = Flask(__name__)
 
-@bot.route("/")
+@app.route("/")
 def index():
-    return render_template("index.html", name ="Cam")
+    return render_template("index.html")
 
-bot.run()
+@app.route("/login", methods=["POST"])
+def userHome():
+    user = request.form["username"]
+    password = request.form["password"]
+    print("User logged in with: " + user + ", " + password)
+    return "Good luck with your webserver!"
+
+app.run()

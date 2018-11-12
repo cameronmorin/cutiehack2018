@@ -5,6 +5,6 @@ bot = Flask(__name__)
 
 @bot.route("/")
 def index():
-    return "Hello CutieHack!"
+    return render_template("index.html", name ="Cam")
 
 bot.run()
